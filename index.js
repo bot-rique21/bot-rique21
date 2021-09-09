@@ -57,7 +57,7 @@ const vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n' 
             + 'FN:Ban\n' // Nama kamu
             + 'ORG:Lexa;\n' // Nama bot
-            + 'TEL;type=CELL;type=VOICE;waid=558294174972:+55 829417-4972\n' //Nomor whatsapp kamu
+            + 'TEL;type=CELL;type=VOICE;waid=554891428604:+55 48 91428604\n' //Nomor whatsapp kamu
             + 'END:VCARD'
 const ngonsol = JSON.parse(fs.readFileSync('./database/6/Miku.json'))
 const {
@@ -315,12 +315,12 @@ client.sendMessage(from, tujuh, video, {quoted: mek, mimetype: 'video/mp4', ptt:
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["558294174972@s.whatsapp.net"] // replace this with your number
-			const mod = [ownerNumber,"558294174972@s.whatsapp.net","558896824504@s.whatsapp.net"]//ubah nomor lo
-			const adminbotnumber = ["558294174972@s.whatsapp.net"]//ubah nomor lo
-			const frendsowner = ["558294174972@s.whatsapp.net"]//ubah nomor lo
-			const premium = ["558294174972@s.whatsapp.net","5522996126535@s.whatsapp.net","558896824504@s.whatsapp.net","5511995758249@s.whatsapp.net","557399501818@s.whatsapp.net","15873559119@s.whatsapp.net","5522996126535 @s.whatsapp.net","559488082561@s.whatsapp.net","553299741795@s.whatsapp.net","558881500897@s.whatsapp.net","5511952967205@s.whatsapp.net"]
-			const fundador = ["558896824504@s.whatsapp.net","552171281425@s.whatsapp.net","5511995758249@s.whatsapp.net","558294174972@s.whatsapp.net"]
+			const ownerNumber = ["554891428604@s.whatsapp.net"] 
+			const mod = [ownerNumber,"554891428604@s.whatsapp.net"]
+			const adminbotnumber = ["554891428604@s.whatsapp.net"]
+			const frendsowner = ["554891428604@s.whatsapp.net"]
+			const premium = ["554891428604@s.whatsapp.net"t"]
+			const fundador = ["554891428604@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -392,7 +392,15 @@ client.sendMessage(from, tujuh, video, {quoted: mek, mimetype: 'video/mp4', ptt:
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
 // comando com o prefixo//		
-                
+                 case 'adm':	
+			  case 'adms':
+			  case 'admins':
+			if (!isGroupAdmins) return reply(mess.only.admin)
+			if (!isGroup) return reply(`Este comando só pode ser usado em grupos`)
+cuImg = await getBuffer (`https://img.icons8.com/bubbles/2x/admin-settings-male.png`)
+client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whatsapp.net`, ...{}}, message: { "imageMessage": { "caption": "Menu Admins",}}}, caption: admins(prefix, sender)})
+					break
+					
 				case 'menu':
 			  case 'help':
 			 if (!isGroupAdmins) return reply(mess.only.admin)
