@@ -600,7 +600,7 @@ break
 					
 					                                case 'linkdogrupo':
                                         if (!isGroup) return reply(mess.only.group)
-                                        if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+                                     
                                         linkgc = await client.groupInviteCode(from)
                                         reply('https://chat.whatsapp.com/'+linkgc)
                                         break
