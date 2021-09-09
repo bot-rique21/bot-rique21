@@ -263,7 +263,8 @@ async function starts() {
 			}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
-		}
+	     }
+	})
 	
 
 	client.on('CB:Blocklist', json => {
