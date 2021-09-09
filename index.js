@@ -403,6 +403,12 @@ async function starts() {
 // comando com o prefixo//	
 					
 					// comando dos Admins//
+					
+					case 'nomegp':
+                 if (!isGroup) return reply(`Este comando só pode ser usado em grupos`)
+		             if (args.length < 1) return reply (`o nome do grupo é: *${groupName}*`)
+		           break
+
 					 case 'level':
 		case 'level1':			
 					if (!isLevelingOn) return reply(mess.levelnoton)
