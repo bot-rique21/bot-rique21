@@ -319,7 +319,7 @@ client.sendMessage(from, tujuh, video, {quoted: mek, mimetype: 'video/mp4', ptt:
 			const mod = [ownerNumber,"554891428604@s.whatsapp.net"]
 			const adminbotnumber = ["554891428604@s.whatsapp.net"]
 			const frendsowner = ["554891428604@s.whatsapp.net"]
-			const premium = ["554891428604@s.whatsapp.net"t"]
+			const premium = ["554891428604@s.whatsapp.net"]
 			const fundador = ["554891428604@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
