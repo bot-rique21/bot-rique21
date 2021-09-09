@@ -15,10 +15,8 @@ const help = (prefix, sender) => {
 ┠⊷ ${prefix}diversao
 ┠⊷ ${prefix}botfalar
 ┗━━━━━━━━━━━━━━━━━━━━
-┏━━━━━━━━━━━━━━━━━━━━
-┃
-─────〘 RIQUE O Lendario 〙─────
-┃
-┗━━━━━━━━━━━━━━━━━━━━ ` 
+ ┏━━━━━━━━━━━━━━━━━━━━
+ ┃─────〘 BOT O LENDARIO 〙─────
+ ┗━━━━━━━━━━━━━━━━━━━━ ` 
 }
 exports.help = help
