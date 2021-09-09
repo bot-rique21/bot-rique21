@@ -390,7 +390,15 @@ client.sendMessage(from, tujuh, video, {quoted: mek, mimetype: 'video/mp4', ptt:
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
 // comando com o prefixo//		
-                case '(comando)':
+                
+				case 'menu':
+			  case 'help':
+			 if (!isGroupAdmins) return reply(mess.only.admin)
+			if (!isGroup) return reply(`Este comando só pode ser usado em grupos`)		
+cuImg = await getBuffer (`http://2.bp.blogspot.com/-sCQOU3_sDzs/VDtCPxR-O5I/AAAAAAAAIKc/g-NV57_KTkA/s1600/Divers%C3%A3o.png`)
+client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whatsapp.net`, ...{}}, message: { "imageMessage": { "caption": "Menu ",}}}, caption: help(prefix, time, pushname, sender)})
+					break
+				case '(comando)':
 	         	if (args.length < 1) return reply ('up')
 		        break
 				default:
