@@ -406,7 +406,10 @@ client.sendMessage(from, comd, text)
 comd = `up`
 client.sendMessage(from, comd, text) 
    			}   										
-									
+				if (messagesC.includes("rique")){
+			client.updatePresence(from, Presence.composing)
+			reply("OPA , ESSE É O CRIADOR BOT LENDARIO")
+	}					
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
