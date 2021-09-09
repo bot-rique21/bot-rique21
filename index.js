@@ -403,6 +403,100 @@ async function starts() {
 // comando com o prefixo//	
 					
 					// comando dos Admins//
+					 case 'level':
+		case 'level1':			
+					if (!isLevelingOn) return reply(mess.levelnoton)
+					if (!isGroup) return reply(mess.only.group)
+					const userLevel = getLevelingLevel(sender)
+					const userXp = getLevelingXp(sender)
+					if (userLevel === undefined && userXp === undefined) return reply(mess.levelnol)
+					sem = sender.replace('@s.whatsapp.net','')
+					resul = `┏━━❉ *LEVEL* ❉━━\n┣⊱ Nome : ${sem}\n┣⊱ Seu XP :  ${userXp}\n┣⊱ Seu Level : ${userLevel}\n┗━━━━━━━━━━━━`
+					client.sendMessage(from, resul, text, { quoted: mek})
+					.catch(async (err) => {
+                    console.error(err)
+                    await reply(`Error!\n${err}`)
+                    })
+                    break
+					case 'fechar':
+					client.updatePresence(from, Presence.composing) 
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					var nomor = mek.participant
+					const close = {
+					text: `Grupo Fechado pelo administrador  @${nomor.split("@s.whatsapp.net")[0]}\n  *Só Adms Podem mandar mensagem*`,
+					contextInfo: { mentionedJid: [nomor] }
+					}
+					client.groupSettingChange (from, GroupSettingChange.messageSend, true);
+					reply(close)
+					break
+				 
+			
+                case 'abrir':
+               
+					client.updatePresence(from, Presence.composing) 
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					open = {
+					text: `Grupo Aberto pelo administrador  @${sender.split("@")[0]}\n  *todos os participantes pode enviar mensagens*`,
+					contextInfo: { mentionedJid: [sender] }
+					}
+					client.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					client.sendMessa
+				case 'setppbot':
+				client.updatePresence(from, Presence.composing) 
+				if (!isQuotedImage) return reply(`Grupo aberto pelo administrador @${sender.split("@")[0]}\nsekarang *todos os participantes* pode enviar mensagens`)
+					if (!isOwner) return reply(mess.only.ownerB)
+					enmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await client.downloadAndSaveMediaMessage(enmedia)
+					await client.updateProfilePicture(botNumber, media)
+					reply('Obrigado pelo novo perfil😗')
+					break
+				case 'lvl':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Boo :𝘃')
+					if (args[0] === 'on') {
+                    if (isLevelingOn) return reply('*O comando de nivel  já estava ativo*')
+                    _leveling.push(groupId)
+                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
+                     reply(mess.levelon)
+					} else if (args[0] === 'off') {
+                    _leveling.splice(groupId, 1)
+                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
+                     reply(mess.leveloff)
+					} else {
+					reply('use lvl 1 para on ativar parar desativar lvl 1 off')
+					}
+					break
+					
+					case 'regras':
+                    client.updatePresence(from, Presence.composing)
+                    if (!isGroup) return reply(mess.only.group)
+                    ppUrl = await client.getProfilePicture(from) // leave empty to get your own
+			        buffer = await getBuffer(ppUrl)
+		            client.sendMessage(from, buffer, image, {quoted: mek, caption: `*NOME* : ${groupName}\n*MEMBRO* : ${groupMembers.length}\n*ADMIN* : ${groupAdmins.length}\n*DESCRIÇÃO* : ${groupDesc}`})
+                    break
+					
+					case 'clonar':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Marque a pessoa que você quer clonar\n\n*EXEMPLO:* clone @')
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag cvk')
+					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
+					let { jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
+					try {
+						pp = await client.getProfilePicture(id)
+						buffer = await getBuffer(pp)
+						client.updateProfilePicture(botNumber, buffer)
+						mentions(`ok , Chefe foto dessa pessoal foi clonada no bot. @${id.split('@')[0]}`, [jid], true)
+					} catch (e) {
+						reply('Putz, deu erro, a pessoa deve estar sem foto 😔')
+					}
+                
+					break
 					
 					case 'nivel':
 					if (!isGroup) return reply(mess.only.group)
