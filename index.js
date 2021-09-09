@@ -546,6 +546,22 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 						reply(`Envie fotos com legendas **figurinha* ou marque uma imagem que já foi enviada`)
 					}
 					break
+					 case 'gostosas':
+try{
+if(!isGroup) return reply(mess.only.group)
+d = []
+teks = ' 🥰*AS GOSTOSAS DO GRUPO*🥰\n'
+for(i = 0; i < 10; i++) {
+r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
+teks += `‍‍‍🥰⇛ @${groupMembers[r].jid.split('@')[0]}\n`
+d.push(groupMembers[r].jid)
+}
+mentions(teks, d, true)
+} catch (e) {
+console.log(e)
+reply('Deu erro, tente novamente :/')
+}
+break
 					
 				default:
 /// comando de frases sem prefixo ///				
