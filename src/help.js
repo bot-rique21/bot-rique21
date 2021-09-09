@@ -1,10 +1,9 @@
-const help = (prefix, sender, pushname, time) => {
+const help = (prefix, sender,time) => {
 
 	return ` 
 ┏━━━━━━━━━━━━━━━━━━━━
 ┃─────〘 LENDARIO 〙────
 ┃━━━━━━━━━━━━━━━━━━━━
-┠⊷ nome: ${pushname}
 ┠⊷ numéro wa.me/${sender.split("@")[0]}   
 ┠⊷ tempo ativo: ${kyun(uptime)}
 ┠⊷ Velocidade: ${process.uptime()}  
