@@ -402,6 +402,35 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 				case '(comando)':
 	         	if (args.length < 1) return reply ('up')
 		        break
+					case 'musica':
+					  if (args.length < 1) return reply('Cᴀᴅᴇ ᴏ ɴᴏᴍᴇ ᴅᴀ ᴍᴜ́sɪᴄᴀ?')
+                reply('🔎Pʀᴏᴄᴜʀᴀɴᴅᴏ ᴍᴜ́sɪᴄᴀ..🔎')
+                const play = body.slice(8)
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=italumaster`)
+                 infomp3 = `┏━━━━━━━━━━━━━━━━━━━━
+┃   〘ᴍᴜsɪᴄᴀ ᴇɴᴄᴏɴᴛʀᴀᴅᴀ!!! 〙
+┃━━━━━━━━━━━━━━━━━━━
+┠⊷\nᴛɪᴛᴜʟᴏ: 
+┠⊷ ${anu.result.title}\
+
+┠⊷  \n𝚄𝚛𝚕:
+┠⊷ ${anu.result.source}
+┠⊷\nTᴀᴍᴀɴʜᴏ: ${anu.result.size}\
+
+┠⊷\nᴘᴏʀ ғᴀᴠᴏʀ ᴇsᴘᴇʀᴇ ᴏ ᴅᴏᴡɴʟᴏᴀᴅ sᴇʀ ᴄᴏɴᴄʟᴜɪᴅᴏ!!!
+ 
+┏━━━━━━━━━━━━━━━━━━━━
+┠⊷ Mᴇᴜ ᴄʀɪᴀᴅᴏʀ:
+┠⊷ wa.me/554891843177
+┠⊷ Cᴏᴘʏʀɪɢʜᴛ ® Bᴏᴛ ᴏ Lᴇɴᴅᴀʀɪᴏ 2021 
+┗━━━━━━━━━━━━━━━━━━━━`
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                if (anu.error) return reply( mess.error.again)
+					break
+					
 				default:
 /// comando de frases sem prefixo ///				
         if (budy.includes(`(comando)`)){
