@@ -225,7 +225,7 @@ async function starts() {
 	await client.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./BarBar.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 
-	client.on('group-participants-update', async (anu) => {
+	//*** FUNCTION WELCOME ****
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await client.groupMetadata(anu.jid)
@@ -237,11 +237,18 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `Olá @${num.split('@')[0]}\nBem vindo ao grupo *${mdata.subject}*\n\nPeço q se comporte`
+				teks = `┏━━━━━━━━━━━━━━━━━━━━
+┃─────〘𝙱𝙴𝙼 𝚅𝙸𝙽𝙳𝙾 〙────
+┃━━━━━━━━━━━━━━━━━━━━
+┠⊷ 𝙽𝙾𝙼𝙴: ${num.split('@')[0]}
+┠⊷ 𝙽𝙾𝙼𝙴: ${mdata.subject}
+┠⊷ Lᴇɪᴀ ᴀs ʀᴇɢʀᴀs ᴘʀᴀ ɴᴀ̃ᴏ sᴇʀ
+┠⊷ ʙᴀɴɪᴅᴏ! 
+┠⊷ Mᴇᴜ ᴄʀɪᴀᴅᴏʀ:
+┠⊷ wa.me//554891428604
+┗━━━━━━━━━━━━━━━━━━━━`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-				client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})				
-client.sendMessage(from, tujuh, video, {quoted: mek, mimetype: 'video/mp4', ptt:true})
 			} else if (anu.action == 'remove') {
 				num = anu.participants[0]
 				try {
@@ -249,10 +256,10 @@ client.sendMessage(from, tujuh, video, {quoted: mek, mimetype: 'video/mp4', ptt:
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `Tchau @${num.split('@')[0]} \nflw seu otário`
+				teks = `Menos 1 😔... @${num.split('@')[0]}`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-							}
+			}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
@@ -391,7 +398,34 @@ client.sendMessage(from, tujuh, video, {quoted: mek, mimetype: 'video/mp4', ptt:
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
-// comando com o prefixo//		
+// comando com o prefixo//	
+					
+					// comando dos Admins//
+					
+				case 'bemvindo':
+					if (!isGroup) return reply(mess.only.group)
+					if (args.length < 1) return reply('Hmmmm')
+					if (Number(args[0]) === 1) {
+					if (isWelkom) return reply('Já esta ativo.')
+					welkom.push(from)
+				    fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+				    reply('Ativou com sucesso o recurso de boas-vindas neste grupo 😉️')
+					} else if (Number(args[0]) === 0) {
+					welkom.splice(from, 1)
+					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+					reply('Desativou com sucesso o recurso de boas-vindas neste grupo 😡️')
+					} else {
+					reply('1 para ativar, 0 para desativar, lerdão vc em KAKKKK')
+					}
+                                      break
+					
+					
+					
+				// FIIIIIM //
+					
+					// cases menus , logod , temas , etc... //
+					
+					
                  case 'adm':	
 			  case 'adms':
 			  case 'admins':
