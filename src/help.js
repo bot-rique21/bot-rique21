@@ -21,5 +21,4 @@ const help = (prefix, sender) => {
 ┃
 ┗━━━━━━━━━━━━━━━━━━━━ ` 
 }
-}
 exports.help = help
