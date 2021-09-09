@@ -1,4 +1,4 @@
-const help = (prefix, sender,time) => {
+const help = (prefix, sender) => {
 
 	return ` 
   
