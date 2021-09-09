@@ -7,7 +7,7 @@ const help = (prefix, sender) => {
  ┗━━━━━━━━━━━━━━━━━━━━
 ┏━━━━━━━━━━━━━━━━━━━━          
 ┠⊷ ${prefix}admins                    
-┠⊷ ${prefix}tema
+┠⊷ ${prefix}musica
 ┠⊷ ${prefix}logo
 ┠⊷ ${prefix}usuario        
 ┠⊷ ${prefix}Dono1                           
