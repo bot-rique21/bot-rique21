@@ -1,4 +1,4 @@
-const help = (prefix, sender, pushname, time, frasealeatoria) => {
+const help = (prefix, sender, pushname, time) => {
 
 	return ` 
 ┏━━━━━━━━━━━━━━━━━━━━
@@ -9,7 +9,6 @@ const help = (prefix, sender, pushname, time, frasealeatoria) => {
 ┠⊷ tempo ativo: ${kyun(uptime)}
 ┠⊷ Velocidade: ${process.uptime()}  
 ┠⊷ Data e hora: ${time}   
-┠⊷ frase: ${frasealeatoria}
 ┗━━━━━━━━━━━━━━━━━━━━  
  ┏━━━━━━━━━━━━━━━━━━━━
  ┃─────〘 MENU 〙─────
@@ -25,8 +24,9 @@ const help = (prefix, sender, pushname, time, frasealeatoria) => {
 ┠⊷ ${prefix}botfalar
 ┗━━━━━━━━━━━━━━━━━━━━
 ┏━━━━━━━━━━━━━━━━━━━━
-┃─────〘 RIQUE O Lendario 〙─────
-┃──〘 ⚡Menu Organizado⚡ 〙──
+┃
+─────〘 RIQUE O Lendario 〙─────
+┃
 ┗━━━━━━━━━━━━━━━━━━━━ 
 
       `
