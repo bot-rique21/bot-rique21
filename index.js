@@ -696,6 +696,18 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 				case '(comando)':
 	         	if (args.length < 1) return reply ('up')
 		        break
+					case 'nicks':
+
+    client.updatePresence(from, Presence.composing)
+    data = await fetchJson(`https://api.zeks.xyz/api/nickepep?apikey=${ZeksKey}`, {
+        method: 'get'
+    })
+    teks = '=================\n'
+    for (let i of data.result) {
+        teks += `Nick: ${i}\n=================\n`
+    }
+    reply(teks.trim())
+    break
 					case 'musica':
 					  if (args.length < 1) return reply('Cᴀᴅᴇ ᴏ ɴᴏᴍᴇ ᴅᴀ ᴍᴜ́sɪᴄᴀ?')
                 reply('🔎Pʀᴏᴄᴜʀᴀɴᴅᴏ ᴍᴜ́sɪᴄᴀ..🔎')
