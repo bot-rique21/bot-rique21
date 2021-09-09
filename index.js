@@ -421,7 +421,7 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
                break
 					case 'meme':
-				 data = fs.readFileSync('./image/api.js');
+				 data = fs.readFileSync('./src/image/api.js');
                  jsonData = JSON.parse(data);
                  randIndex = Math.floor(Math.random() * jsonData.length);
                  randKey = jsonData[randIndex];
