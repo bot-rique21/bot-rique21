@@ -420,6 +420,15 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					})
 					
                break
+					case 'meme':
+				 data = fs.readFileSync('./image/api.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                hasil = await getBuffer(randKey.result)
+                sendImage(hasil, mek, 'APi criador por Rique o lendario')
+				break
+					
 				case '(comando)':
 	         	if (args.length < 1) return reply ('up')
 		        break
