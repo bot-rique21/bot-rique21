@@ -404,6 +404,74 @@ async function starts() {
 					
 					// comando dos Admins//
 					
+					case 'ban':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('A marca-alvo que você deseja remover!')
+if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) return;
+if (mek.message.extendedTextMessage.contextInfo.participant === undefined) {
+entah = mek.message.extendedTextMessage.contextInfo.mentionedJid
+if (exe1.length > 1) {
+var M_exe = []
+for (let cut of exe1) {
+M_exe.push(cut)
+}
+client.groupRemove(from, M_exe)
+} else {
+client.groupRemove(from, [exe1[0]])
+}
+} else {
+exe1 = mek.message.extendedTextMessage.contextInfo.participant
+client.groupRemove(from, [exe1])
+}
+break
+					
+				case 'remover':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('A marca-alvo que você quer remover!')
+					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+						teks = 'esse filha da puta não cumpriu as regras foi removido :\n'
+						for (let _ of mentioned) {
+							teks += `@${_.split('@')[0]}\n`
+						}
+						mentions(teks, mentioned, true)
+						client.groupRemove(from, mentioned)
+					} else {
+						mentions(`Alvo removido com sucesso  : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						client.groupRemove(from, mentioned)
+					}
+					break
+					
+					                                case 'linkdogrupo':
+                                        if (!isGroup) return reply(mess.only.group)
+                                        if (!isGroupAdmins) return reply(mess.only.admin)
+                                        if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+                                        linkgc = await client.groupInviteCode(from)
+                                        reply('https://chat.whatsapp.com/'+linkgc)
+                                        break
+                                case 'sair':
+                                        if (!isGroup) return reply(mess.only.group)
+                                        if (isGroupAdmins || isOwner) {
+                                            client.groupLeave(from)
+                                        } else {
+                                            reply(mess.only.admin)
+                                        }
+                                        break
+					case 'totaladm':
+					if (!isGroup) return reply(mess.only.group)
+					teks = `Lista de admins do grupo *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+					no = 0
+					for (let admon of groupAdmins) {
+						no += 1
+						teks += `[${no.toString()}] @${admon.split('@')[0]}\n`
+					}
+					mentions(teks, groupAdmins, true)
+					break
+					
 				case 'bemvindo':
 					if (!isGroup) return reply(mess.only.group)
 					if (args.length < 1) return reply('Hmmmm')
