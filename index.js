@@ -226,6 +226,7 @@ async function starts() {
         fs.writeFileSync('./BarBar.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 
 	//*** FUNCTION WELCOME ****
+	client.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await client.groupMetadata(anu.jid)
