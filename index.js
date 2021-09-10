@@ -643,6 +643,33 @@ break
 					
 					
 				// FIIIIIM //
+
+						// COMANDO PARA O DONO //
+					
+					case 'comunicado':
+					if (!isOwner) return reply('Quem é Você, você não é meu dono 😂?')
+					if (args.length < 1) return reply('.......')
+					anu = await client.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await client.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							client.sendMessage(_.jid, buff, image, {caption: `[ TRANSMIÇÃO DE AVISO ]\n\n${body.slice(12)}`})
+						}
+						
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `[ COMUNICADO ]\n\n${body.slice(12)}`)
+						}
+						reply('Transmissão enviada com sucesso')
+					}
+					break
+					
+					
+					
+					
+	// FIIIIIM //
+					
 					
 					// cases menus , logod , temas , etc... //
 					
