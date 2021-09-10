@@ -675,6 +675,25 @@ break
 					reply(`Chat do bot limpo com sucesso!`)
 					break
 					
+					case 'delete':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('marque a msg para apagar *seja um administrador!*')
+					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+						teks = 'Comando recebido, excluir mensagem :\n'
+						for (let _ of mentioned) {
+							teks += `@${_.split('@')[0]}\n`
+						}
+						mentions(teks, mentioned, true)
+						client.deleteMessage(from, mentioned)
+					} else {
+						mentions(`Perintah di terima, hapus pesan : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						client.deleteMessage(from, mentioned)
+					
+					}
+					break
 					
 					
 	// FIIIIIM //
