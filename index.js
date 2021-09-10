@@ -665,6 +665,15 @@ break
 					}
 					break
 					
+					case 'limpar':
+					if (!isOwner) return reply(ind.ownerb())
+					anu = await client.chats.all()
+					client.setMaxListeners(25)
+					for (let _ of anu) {
+						client.deleteChat(_.jid)
+					}
+					reply(`Chat do bot limpo com sucesso!`)
+					break
 					
 					
 					
