@@ -1,19 +1,15 @@
 const help = (prefix, sender) => {
 
 	return ` 
-  
  ┏━━━━━━━━━━━━━━━━━━━━
  ┃─────〘 MENU 〙─────
  ┗━━━━━━━━━━━━━━━━━━━━
 ┏━━━━━━━━━━━━━━━━━━━━          
 ┠⊷ ${prefix}admins                    
-┠⊷ ${prefix}musica
-┠⊷ ${prefix}logo
 ┠⊷ ${prefix}usuario        
-┠⊷ ${prefix}Dono1                           
-┠⊷ ${prefix}novidades
+┠⊷ ${prefix}dono                           
+┠⊷ ${prefix}novidade
 ┠⊷ ${prefix}diversao
-┠⊷ ${prefix}botfalar
 ┗━━━━━━━━━━━━━━━━━━━━
  ┏━━━━━━━━━━━━━━━━━━━━
  ┃─────〘 BOT O LENDARIO 〙─────
