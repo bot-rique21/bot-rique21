@@ -706,7 +706,7 @@ break
 					case 'usuario':	
 			  case 'usuarios':
 			  case 'users':
-			 if (!isGroupAdmins) return reply(mess.only.admin)
+			
 			if (!isGroup) return reply(`Este comando só pode ser usado em grupos`)
 cuImg = await getBuffer (`https://image.flaticon.com/icons/png/512/306/306232.png`)
 client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whatsapp.net`, ...{}}, message: { "imageMessage": { "caption": "Menu do Usuario",}}}, caption: usuario(prefix, sender)})
