@@ -714,7 +714,7 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 				case 'menu':
 			  case 'help':
 			 if (!isGroup) return reply(`Este comando só pode ser usado em grupos`)		
-cuImg = await getBuffer (`https://ibb.co/X7T5WjS`)
+cuImg = await getBuffer (`https://i.ibb.co/0C39nmh/menu.jpg`)
 client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whatsapp.net`, ...{}}, message: { "imageMessage": { "caption": "Menu ",}}}, caption: help(prefix, time, sender)})
 					break
 					
