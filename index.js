@@ -703,7 +703,8 @@ break
 					// cases menus , logod , temas , etc... //
 					
 					
-					case 'usuario':	
+		          case 'usuario':
+                          case 'usuário':
 			  case 'usuarios':
 			  case 'users':
 			
