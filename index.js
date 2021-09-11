@@ -730,6 +730,14 @@ cuImg = await getBuffer (`https://i.ibb.co/0C39nmh/menu.jpg`)
 client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whatsapp.net`, ...{}}, message: { "imageMessage": { "caption": "Menu ",}}}, caption: help(prefix, time, sender)})
 					break
 					
+					
+					
+					// FIIIIIM //
+					
+					
+					// CASE DO USUARIO //
+					
+					
 					case 'voz':
 					if (args.length < 1) return client.sendMessage(from, 'Ox, cade o codigo da liguagem mn? \n Exemplo: *voz pt palavra', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
@@ -750,6 +758,21 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					})
 					
                break
+					case 'converte':
+					if (!isQuotedSticker) return reply('{ ❗ } *Marque a figurinha*')
+					reply(mess.wait)
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.png')
+					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+						fs.unlinkSync(media)
+						if (err) return reply('❌ Falha ao converter adesivos em imagens ❌')
+						buffer = fs.readFileSync(ran)
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
+						fs.unlinkSync(ran)
+					})
+					break
+					
 					case 'meme':
 				 data = fs.readFileSync('./src/image/api.js');
                  jsonData = JSON.parse(data);
@@ -759,22 +782,7 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
                 sendImage(hasil, mek, 'APi criador por Rique o lendario')
 				break
 					
-				case '(comando)':
-	         	if (args.length < 1) return reply ('up')
-		        break
-					case 'nicks':
-
-    client.updatePresence(from, Presence.composing)
-    data = await fetchJson(`https://api.zeks.xyz/api/nickepep?apikey=${ZeksKey}`, {
-        method: 'get'
-    })
-    teks = '=================\n'
-    for (let i of data.result) {
-        teks += `Nick: ${i}\n=================\n`
-    }
-    reply(teks.trim())
-    break
-					case 'musica':
+				      case 'musica':
 					  if (args.length < 1) return reply('Cᴀᴅᴇ ᴏ ɴᴏᴍᴇ ᴅᴀ ᴍᴜ́sɪᴄᴀ?')
                 reply('🔎Pʀᴏᴄᴜʀᴀɴᴅᴏ ᴍᴜ́sɪᴄᴀ..🔎')
                 const play = body.slice(8)
@@ -897,23 +905,12 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 						reply(`Envie fotos com legendas **figurinha* ou marque uma imagem que já foi enviada`)
 					}
 					break
-					 case 'gostosas':
-try{
-if(!isGroup) return reply(mess.only.group)
-d = []
-teks = ' 🥰*AS GOSTOSAS DO GRUPO*🥰\n'
-for(i = 0; i < 10; i++) {
-r = Math.floor(Math.random() * groupMetadata.participants.length + 0)
-teks += `‍‍‍🥰⇛ @${groupMembers[r].jid.split('@')[0]}\n`
-d.push(groupMembers[r].jid)
-}
-mentions(teks, d, true)
-} catch (e) {
-console.log(e)
-reply('Deu erro, tente novamente :/')
-}
-break
+				
 					
+					// FIIIIIM //
+					
+					
+								
 				default:
 /// comando de frases sem prefixo ///				
         if (budy.includes(`(comando)`)){
