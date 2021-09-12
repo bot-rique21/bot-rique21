@@ -1162,7 +1162,7 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					} else {
 						console.log(color('[ERROR]','red'), 'Eita Mano , o comando não registrado', color(sender.split('@')[0]))
 					}
-                           }
+                           
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
