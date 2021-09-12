@@ -1141,7 +1141,8 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					
  
-					
+					}
+			
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
