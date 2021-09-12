@@ -324,37 +324,35 @@ async function starts() {
 			pushname = client.contacts[nameReq] != undefined ? client.contacts[nameReq].vname || client.contacts[nameReq].notify : undefined
 
 			mess = {
-					wait: 'So um minuto amigo (a)',
-					success: '️❬ ✔ ❭ Sucesso 🖤',
-					levelon: '❬ ✔ ❭ *leveling* *ativado*',
-					leveloff: ' ❬ X ❭  *leveling* *desativado*',
-					levelnoton: '❬ X ❭ *leveling não ativado*',
-					levelnol: '*error* 0 °-°',
+					wait: '⚡Calma ae lendario trabalhando⚡',
+					success: 'Pronto',
+					levelon: '*leveling* *ativado*',
+					leveloff: '*leveling* *desativado*',
+					levelnoton: ' *leveling não ativado*',
+					levelnol: '*ERROR* °-°',
 					error: {
-				stick: '*Bem, falhe, tente novamente ^_^*',
-				Iv: '𝗠𝗮𝗮𝗳 𝗹𝗶𝗻𝗸 𝘁𝗶𝗱𝗮𝗸 𝘃𝗮𝗹𝗶𝗱☹️'
+				stick: 'Não deu pra converter a foto/video na figurinha parsa, A vida e triste',
+				Iv: 'Link invalido'
 				},
 				only: {
-					group: '[❗] Este comando só pode ser usado em grupos! ❌',
-					premium: '[❗] ESTE PEDIDO É SO PARA OS OFC DA FACC OU OS ADMS',
-					fundador: '[❗] APENAS OS DONOS DO BOT PODEM USAR ESSE COMANDO ',
-					mod: '[❗] ESTE PEDIDO É ESPECÍFICO PARA USUARIO MOD DA ZERO TWO*',
-					benned: 'Você para a banda, por favor, contate o proprietário para abrir sua banda',
-					ownerG: '[❗] Proprietário? Este é um recurso especial para o proprietário do bot ❌',
-					ownerB: '[❗] Proprietário? Este é um recurso especial para o proprietário do bot ❌',
-					userB: `──「 LISTA 」──\nOlá Kak !\nDesculpe, irmã. Você não está registrado como amigo de Ban. Registre-se para fazer amizade com a zero two por meio, \n\nCommand : ${prefix}daftar noma|idade\nExemplo : ${prefix}daftar satã|666\n\n──「 Zero Two 」──`,
-					admin: '[❗] Este comando só pode ser usado por administradores de grupo! ❌',
-					Badmin: ' [❗] Este comando só pode ser usado quando o bot se torna administrador! ❌',
+					group: 'Este comando so pode ser usado nos grupos maninho',
+					premium: `Ei {pushname2} Só usuarios PREMIUMS podem usar este comando*`,
+					mod: 'ESTE PEDIDO É ESPECÍFICO PARA O MODERADOR DO lendario*',
+					benned: 'Você foi banido, contate o dono para te desbanir',
+					ownerG: 'Só o RIQUE pode usar esse comando meu mano',
+					ownerB: 'Só o RIQUE  pode usar esse comando meu mano',
+					userB: `──「 LISTA 」──\nOlá ${pushname} !\nVocê não esta registrado como amigo do meu dono então pessa para ele te adicionar como amigo\n\n──「 ⚡Super Xandão⚡ 」──`,
+					admin: 'Este comando só pode ser usado por administradores de grupo!',
+					Badmin: 'Este comando so pode ser usado quando o lendario se torna ADM do grupo parsa',
 				}
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["554891428604@s.whatsapp.net"] 
-			const mod = [ownerNumber,"554891428604@s.whatsapp.net"]
-			const adminbotnumber = ["554891428604@s.whatsapp.net"]
-			const frendsowner = ["554891428604@s.whatsapp.net"]
-			const premium = ["554891428604@s.whatsapp.net"]
-			const fundador = ["554891428604@s.whatsapp.net"]
+			const ownerNumber = ["554891428604@s.whatsapp.net","552182230081@s.whatsapp.net","554891428604@s.whatsapp.net","5521971646956@s.whatsapp.net"] // Recoloque o seu numero
+			const mod = [ownerNumber,"554891428604@s.whatsapp.net","552182230081@s.whatsapp.net","554891428604@s.whatsapp.net","5521971646956@s.whatsapp.net"]// Moderador do bot
+			const adminbotnumber = ["554891428604@s.whatsapp.net","552182230081@s.whatsapp.net","554891428604@s.whatsapp.net","5521971646956@s.whatsapp.net"]// admin bot numero
+			const frendsowner = ["554891428604@s.whatsapp.net","552182230081@s.whatsapp.net","554891428604@s.whatsapp.net","5521971646956@s.whatsapp.net"]// amigo do criador 
+			const premium = ["554891428604@s.whatsapp.net","552182230081@s.whatsapp.net","554891428604@s.whatsapp.net","5521971646956@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -364,20 +362,18 @@ async function starts() {
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const groupId = isGroup ? groupMetadata.jid : ''
+			const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss')
 			const isGroupAdmins = groupAdmins.includes(sender) || false
 			const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : true
-			const isPorno = isGroup ? porno.includes(from) : true
-			const isAntiBucin = isGroup ? antibucin.includes(from) : false
 			const isAntiFake = isGroup ? antifake.includes(from) : false
-                        const isAntiLink = isGroup ? antilink.includes(from) : false
+	                const isAntiBucin = isGroup ? antibucin.includes(from) : false
 	    	        const isAnime = isGroup ? anime.includes(from) : false
-	        	const isAntiRacismo = isGroup ? antiracismo.includes(from) : false
+	    	        const isAntiRacismo = isGroup ? antiracismo.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isPremium = premium.includes(sender)
-			const isFundador = fundador.includes(sender)
 			const ismod = mod.includes(sender)
 			const errorurl2 = 'https://i.ibb.co/dttZM8b/591530180aad.png'
 			const isadminbot = adminbotnumber.includes(sender)
