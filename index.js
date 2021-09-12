@@ -225,7 +225,8 @@ async function starts() {
 	})
 	await client.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./BarBar.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
-//**** ANTI-FAKE *****
+
+	//**** ANTI-FAKE *****
 	client.on('group-participants-update', async (anu) => {
 	  	if(antifake.includes(anu.jid)) {
 	const mdata = await client.groupMetadata(anu.jid)
@@ -237,8 +238,8 @@ async function starts() {
 						client.groupRemove(mdata.id, [num])
 					}, 2000)
 			    }
-			}
-		}
+			  }
+	})
 	//*** FUNCTION WELCOME ****
 	client.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
