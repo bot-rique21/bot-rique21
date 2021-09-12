@@ -875,6 +875,42 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					// CASE DO USUARIO //
 					
+						case 'listonline':
+				if (!isGroup) return reply(mess.only.group)
+        		let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
+			    let onli = [...Object.keys(client.chats.get(ido).presences), client.user.jid]
+			    client.sendMessage(from, '`[Usuario Online]:\n' + onli.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, text, { quoted: mek, contextInfo: { mentionedJid: onli } })
+				
+					break
+					
+					
+					case 'ler':
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						const media = await client.downloadAndSaveMediaMessage(encmedia)
+						reply(mess.wait)
+						await recognize(media, {lang: 'eng+ind', oem: 1, psm: 3})
+							.then(teks => {
+								reply(teks.trim())
+								fs.unlinkSync(media)
+							})
+							.catch(err => {
+								reply(err.message)
+								fs.unlinkSync(media)
+							})
+					} else {
+						reply('Só uma foto mano')
+					}
+					break
+					
+					case 'simi':
+					if (args.length < 1) return reply('Onde está o texto, hum?')
+					teks = body.slice(5)
+					anu = await simih(teks) //fetchJson(`https://mhankbarbars.herokuapp.com/api/samisami?text=${teks}`, {method: 'get'})
+					//if (anu.error) return reply('simi é pica tio')
+					reply(anu)
+					break
+					
 					case 'wa.me':
 		        case 'meunumero':
                   client.updatePresence(from, Presence.composing) 
