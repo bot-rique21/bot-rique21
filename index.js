@@ -737,6 +737,17 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					// CASE DO USUARIO //
 					
+					case 'wa.me':
+		        case 'meunumero':
+                  client.updatePresence(from, Presence.composing) 
+                  options = {
+                  text: `「 *LINK WHATSAPP* 」\n\n_Solicitado por_ : *@${sender.split("@s.whatsapp.net")[0]}*\n\nSeu link WhatsApp:\n\n*https://wa.me/${sender.split("@s.whatsapp.net")[0]}*\n\n*Ou*\n\n*https://api.whatsapp.com/send?phone=${sender.split("@")[0]}*\n\n*⚡BOT LENDARIO⚡ NO CONTROLE*`,
+                  contextInfo: { mentionedJid: [sender] }
+                  }
+                  client.sendMessage(from, options, text, { quoted: mek } )
+			      break
+                  
+					
 					case 'rick':
                     client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                     client.sendMessage(from, 'Ctt do meu dono ai, respeita o pv dele',MessageType.text, { quoted: mek} )
