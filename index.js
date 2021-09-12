@@ -1022,4 +1022,6 @@ client.sendMessage(from, comd, text)
 		}
 	})
 }
+ 
+		  }		  
 starts()
