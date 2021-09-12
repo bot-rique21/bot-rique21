@@ -382,6 +382,22 @@ async function starts() {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
 			
+			//FUNÇÃO PRO BOT FALAR 
+}   		 								
+				if (messagesC.includes("rique")){
+			client.updatePresence(from, Presence.composing)
+			reply("OPA , ESSE É O CRIADOR BOT LENDARIO")
+	}	
+					
+							if (messagesC.includes("bot")){
+			client.updatePresence(from, Presence.composing)
+			tujuh = fs.readFileSync('./src/audio/bot.mp3');
+            client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+	
+		}
+
+		//FUNÇÃO PRO BOT FALAR ACABOU
+		
 			if (budy.includes("https://m.kwai.me/")){
 		if (!isGroup) return
 		if (!isAntiBucin) return
@@ -1124,20 +1140,7 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					// FIIIIIM //
 					
 					
-								
-				default:
-/// comando de frases sem prefixo ///				
-        if (budy.includes(`(comando)`)){
-		client.updatePresence(from, Presence.composing)
-comd = `up
-`
-client.sendMessage(from, comd, text)
-          }	
-/// Comando Para Inicio de Frase
-       if (messagesC.includes("(comando)")){	 
-comd = `up`
-client.sendMessage(from, comd, text) 
-   			}   										
+   			}   		 								
 				if (messagesC.includes("rique")){
 			client.updatePresence(from, Presence.composing)
 			reply("OPA , ESSE É O CRIADOR BOT LENDARIO")
@@ -1157,7 +1160,7 @@ client.sendMessage(from, comd, text)
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[ERROR]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'Eita Mano , o comando não registrado', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
