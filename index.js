@@ -219,15 +219,16 @@ async function starts() {
 
 	fs.existsSync('./BarBar.json') && client.loadAuthInfo('./BarBar.json')
 	client.on('connecting', () => {
-		start('2', 'Pera Ae To Vendo Se me conecto')
+		start('2', 'Pera Ae')
 	})
 	client.on('open', () => {
-		success('2', 'Ta Conectado')
+		success('2', 'BOT LENDARIO ESTA ON')
 	})
 	await client.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./BarBar.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 
 	//**** ANTI-FAKE *****
+	
 	client.on('group-participants-update', async (anu) => {
 	  	if(antifake.includes(anu.jid)) {
 	const mdata = await client.groupMetadata(anu.jid)
