@@ -737,6 +737,11 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					// CASE DO USUARIO //
 					
+					case 'rick':
+                    client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
+                    client.sendMessage(from, 'Ctt do meu dono ai, respeita o pv dele',MessageType.text, { quoted: mek} )
+                    break
+					
 					case 'marcar':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
