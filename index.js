@@ -239,8 +239,9 @@ async function starts() {
 					}, 2000)
 			 }
 		}
+       	}
 	
-	 }		
+	})		
 		
 	
 	//*** FUNCTION WELCOME ****
@@ -1023,5 +1024,5 @@ client.sendMessage(from, comd, text)
 	})
 }
  
-		  }		  
+		 		  
 starts()
