@@ -383,7 +383,7 @@ async function starts() {
 			}
 			
 			//FUNÇÃO PRO BOT FALAR 
-}   		 								
+  		 								
 				if (messagesC.includes("rique")){
 			client.updatePresence(from, Presence.composing)
 			reply("OPA , ESSE É O CRIADOR BOT LENDARIO")
