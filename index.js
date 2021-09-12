@@ -238,8 +238,9 @@ async function starts() {
 						client.groupRemove(mdata.id, [num])
 					}, 2000)
 			    }
-			  }
-	})
+			  
+			})
+	
 	//*** FUNCTION WELCOME ****
 	client.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
