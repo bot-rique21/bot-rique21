@@ -875,6 +875,17 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					// CASE DO USUARIO //
 					
+					
+			case 'ping':
+                case 'velocidade':
+                
+                    const timestamp = speed();
+                    const latensi = speed() - timestamp
+                    client.updatePresence(from, Presence.composing) 
+				uptime = process.uptime()
+                    client.sendMessage(from, `Velocidade do bot: *${latensi.toFixed(4)} _Segundos_\nTipo do bot: *Termux Somente*\n\n*O bot esteve ativo por*\n*${kyun(uptime)}*`, text, { quoted: mek})
+                    break
+					
 						case 'listonline':
 				if (!isGroup) return reply(mess.only.group)
         		let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
