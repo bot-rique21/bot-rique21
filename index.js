@@ -237,9 +237,7 @@ async function starts() {
 					setTimeout(async function () {
 						client.groupRemove(mdata.id, [num])
 					}, 2000)
-			    }
-			  
-			})
+			 
 	
 	//*** FUNCTION WELCOME ****
 	client.on('group-participants-update', async (anu) => {
