@@ -381,6 +381,53 @@ async function starts() {
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
+			
+			if (budy.includes("https://m.kwai.me/")){
+		if (!isGroup) return
+		if (!isAntiBucin) return
+		if (isGroupAdmins) return reply('porque você é um administrador do grupo, e o bot  não vai te remover')
+		client.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#harusizintod")) return reply("izin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`「 ANTI-KWAIII DETECTADO 」\n${sender.split("@")[0]} voce sera expulso*`)
+		setTimeout( () => {
+			client.groupRemove(from, [kic]).catch((e)=>{reply(`ERR: ${e}`)})
+		}, 1000)
+		setTimeout( () => {
+			client.updatePresence(from, Presence.composing)
+		}, 0)
+	}
+        if (budy.includes("https://s.kwai.app/s/")){
+		if (!isGroup) return
+		if (!isAntiBucin) return
+		if (isGroupAdmins) return reply('porque você é um administrador do grupo, os bot não grupo ')
+		client.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#harusizintod")) return reply("izin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		reply(`「 SPAM DETECTADO 」\n${sender.split("@")[0]} vou remover por postar links kwai *`)
+		setTimeout( () => {
+			client.groupRemove(from, [kic]).catch((e)=>{reply(`ERR: ${e}`)})
+		}, 1000)
+		setTimeout( () => {
+			client.updatePresence(from, Presence.composing)
+		
+		}, 0)
+	}
+			if (budy.includes("https://chat.whatsapp.com/")){
+		if (!isGroup) return
+		if (!isAntiBucin) return
+		if (isGroupAdmins) return reply('porque você é um administrador do grupo, e o bot  não vai te remover')
+		client.updatePresence(from, Presence.composing)
+		if (messagesC.includes("#harusizintod")) return reply("izin diterima")
+		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+		setTimeout( () => {
+			client.groupRemove(from, [kic]).catch((e)=>{reply(`ERR: ${e}`)})
+		}, 1000)
+		setTimeout( () => {
+			client.updatePresence(from, Presence.composing)
+		
+		}, 0)
+			}
 			const reply = (teks) => {
 				client.sendMessage(from, teks, text, {quoted:mek})
 			}
