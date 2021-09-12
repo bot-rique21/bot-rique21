@@ -81,6 +81,7 @@ limitawal = '999999999'
 
 /*********** LOAD FILE ***********/
 const antifake = JSON.parse(fs.readFileSync('./src/antifake.json'))
+const antibucin = JSON.parse(fs.readFileSync('./database/group/antibucin.json'))
 const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const antilink = JSON.parse(fs.readFileSync('./database/json/antilink.json'))
@@ -365,6 +366,7 @@ async function starts() {
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : true
 			const isPorno = isGroup ? porno.includes(from) : true
+			const isAntiBucin = isGroup ? antibucin.includes(from) : false
 			const isAntiFake = isGroup ? antifake.includes(from) : false
                         const isAntiLink = isGroup ? antilink.includes(from) : false
 	    	        const isAnime = isGroup ? anime.includes(from) : false
