@@ -239,6 +239,8 @@ async function starts() {
 					}, 2000)
 			 }
 		}
+	
+	 }		
 		
 	
 	//*** FUNCTION WELCOME ****
