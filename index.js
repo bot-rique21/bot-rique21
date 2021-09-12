@@ -80,6 +80,7 @@ limitawal = '999999999'
 
 
 /*********** LOAD FILE ***********/
+const antifake = JSON.parse(fs.readFileSync('./src/antifake.json'))
 const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const antilink = JSON.parse(fs.readFileSync('./database/json/antilink.json'))
