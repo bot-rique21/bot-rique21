@@ -380,6 +380,7 @@ async function starts() {
 			const isfrendsowner = frendsowner.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+			}
 			const reply = (teks) => {
 				client.sendMessage(from, teks, text, {quoted:mek})
 			}
@@ -392,24 +393,183 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
-              //function leveling
-            if (isGroup && isLevelingOn) {
-            const currentLevel = getLevelingLevel(sender)
-            const checkId = getLevelingId(sender)
-            try {
-                if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
-                const amountXp = Math.floor(Math.random() * 10) + 500
-                const requiredXp = 10000 * (Math.pow(2, currentLevel) - 1)
-                const getLevel = getLevelingLevel(sender)
-                addLevelingXp(sender, amountXp)
-                if (requiredXp <= getLevelingXp(sender)) {
-                    addLevelingLevel(sender, 1)
-                    await reply(`*「 LEVEL UP 」*\n\n➸ *Nome*: ${sender}\n➸ *XP*: ${getLevelingXp(sender)}\n➸ *Level*: ${getLevel} -> ${getLevelingLevel(sender)}\n\nParabéns!!  🎉🎉`)
-                }
-            } catch (err) {
-                console.error(err)
-            }
-        }
+			let palavrasANA = [
+				{
+					original: 'NETFLIX',
+					embaralhada: 'TFLIXNE',
+					dica: 'APLICATIVO'
+				},
+				{
+					original: 'YOUTUBE',
+					embaralhada: 'TUBEYOU',
+					dica: 'APLICATIVO'
+				},
+				{
+					original: 'PORTUGAL',
+					embaralhada: 'TUGALPOR',
+					dica: 'PAÍS'
+				},
+				{
+					original: 'PISTOLA',
+					embaralhada: 'TOPISLA',
+					dica: 'OBJETO'
+				},
+		
+				{
+					original: 'CAMARÃO',
+					embaralhada: 'MARÃOCA',
+					dica: 'COMIDA'
+				},
+				{
+					original: 'HIDRANTE',
+					embaralhada: 'TEHDIRAN',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'FOGUETE',
+					embaralhada: 'TEFOGUE',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'SKATE',
+					embaralhada: 'TEASK',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'MACACO',
+					embaralhada: 'CACOMA',
+					dica: 'ANIMAL'
+				},
+				{
+					original: 'LASANHA',
+					embaralhada: 'NHASALA',
+					dica: 'COMIDA'
+				},
+				{
+					original: 'PASTEL',
+					embaralhada: 'PATELS',
+					dica: 'COMIDA'
+				},
+				{
+					original: 'COXINHA',
+					embaralhada: 'XICONHA',
+					dica: 'COMIDA'
+				},
+				{
+					original: 'BICICLETA',
+					embaralhada: 'CIBITACLE',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'INSTAGRAM',
+					embaralhada: 'TAGRAMINS',
+					dica: 'APLICATIVO'
+				},
+				{
+					original: 'WHATSAPP',
+					embaralhada: 'TSWHAAPP',
+					dica: 'APLICATIVO'
+				},
+				{
+					original: 'HIDRANTE',
+					embaralhada: 'TEHDIRAN',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'CELULAR',
+					embaralhada: 'CELARLU',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'NOTEBOOK',
+					embaralhada: 'TENOBOOK',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'COMPUTADOR',
+					embaralhada: 'PUCOMDORTA',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'LANTERNA',
+					embaralhada: 'TERLANNA',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'CACHORRO',
+					embaralhada: 'CAORROCHO',
+					dica: 'ANIMAL'
+				},
+				{
+					original: 'DESENTUPIDOR',
+					embaralhada: 'SENDETUDORPI',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'TOMATE',
+					embaralhada: 'ATEMOT',
+					dica: 'ALIMENTO'
+				},
+				{
+					original: 'SAXOFONE',
+					embaralhada: 'ASXOEOFN',
+					dica: 'INSTRUMENTO MUSICAL'
+				},
+				{
+					original: 'CAZAQUISTÃO',
+					embaralhada: 'ZAACQIUSÃOT',
+					dica: 'PAÍS'
+				},
+				{
+					original: 'CROÁCIA',
+					embaralhada: 'CRCÁOAI',
+					dica: 'PAÍS'
+				},
+				{
+					original: 'HUNGRIA',
+					embaralhada: 'UHGINRA',
+					dica: 'PAÍS'
+				},
+				{
+					original: 'MEGAFONE',
+					embaralhada: 'MOEFGNEA',
+					dica: 'OBJETO'
+				},
+				{
+					original: 'CINTURA',
+					embaralhada: 'RCIANUT',
+					dica: 'CORPO HUMANO'
+				},
+				{
+					original: 'ABDÔMEN',
+					embaralhada: 'MBÔDENA',
+					dica: 'CORPO HUMANO'
+				},
+				{
+					original: 'TANGERINA',
+					embaralhada: 'RITAANGNE',
+					dica: 'ALIMENTO'
+				}
+			]
+		//JOGO DO ANAGRAMA
+			if(isGroup && fs.existsSync(`./lindy/anagrama-${from}.json`)){
+			console.log(budy)
+				let dataAnagrama = JSON.parse(fs.readFileSync(`./lindy/anagrama-${from}.json`))
+			   if(budy.slice(0,4).toUpperCase() == dataAnagrama.original.slice(0,4).toUpperCase() && budy.toUpperCase() != dataAnagrama.original) return reply('está perto')
+		
+				if(budy.toUpperCase() == dataAnagrama.original) { client.sendMessage(from, `parabéns @${sender.replace('@s.whatsapp.net', '')}🥳 você ganhou o jogo\nPalavra : ${dataAnagrama.original}\nIniciando o proximo jogo em 5 segundos...`, MessageType.text, {"mentionedJid": [sender]}), fs.unlinkSync(`./lindy/anagrama-${from}.json`)
+		setTimeout(async() => {
+		  await  fs.writeFileSync(`./lindy/anagrama-${from}.json`, `${JSON.stringify(palavrasANA[Math.floor(Math.random() * palavrasANA.length)])}`)
+			let dataAnagrama2 = JSON.parse(fs.readFileSync(`./lindy/anagrama-${from}.json`))
+			client.sendMessage(from, `
+╭─────≽「 👾 ANAGRAMA 👾 」
+│➽ DESCUBRA A PALAVRA
+│➽ ANAGRAMA: ${dataAnagrama2.embaralhada}
+│➽ DICA: ${dataAnagrama2.dica}
+╰────────────────────────
+		`, MessageType.text)                 
+		}, 5000)
+			}}
 			
 			//FUNÇÃO PRO BOT FALAR 
   		 								
