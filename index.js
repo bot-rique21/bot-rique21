@@ -395,6 +395,11 @@ async function starts() {
             client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 	
 		}
+			if (message.includes('@5548918604')){
+			client.updatePresence(jid, Presence.composing)
+			reply("OPA , ESSE É MEU DONO RIQUE O LENDARIO") 
+	}	
+			
 
 		//FUNÇÃO PRO BOT FALAR ACABOU
 		
