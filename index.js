@@ -394,11 +394,13 @@ async function starts() {
 			tujuh = fs.readFileSync('./src/audio/bot.mp3');
             client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 	
-		}
-			if (messagesC.includes('@5548918604')){
-			client.updatePresence(from, Presence.composing)
-			reply("OPA , ESSE É MEU DONO RIQUE O LENDARIO") 
-	}	
+		     }	
+								
+		if (budy.toLowerCase().includes("@554891428604")){
+					if (!isGroup) return
+					client.updatePresence(from, Presence.composing)
+					reply(`Ta falando oq do meu dono ?`)
+				    }
 			
 
 		//FUNÇÃO PRO BOT FALAR ACABOU
