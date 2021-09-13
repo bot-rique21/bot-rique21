@@ -1,1 +1,1 @@
-# bot-virgem
+# bot-rique
