@@ -1329,8 +1329,40 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					// FIIIIIM //
 					
+					// COMANDO PARa O JOGO //
+					case 'anagrama':
+						if(!isGroup) return reply('comando apenas para grupos')
+					  const anaaleatorio = Math.floor(Math.random() * palavrasANA.length)
+					  if(!isGroupAdmins) return reply('comando apenas para admins')
+				   if(args.length == 0) return reply('use #anagrama ativar para ativar o jogo do anagrama\npara desativar user #anagrama desativar')
+						if (args.join(' ') === 'ativar') {
+							if(fs.existsSync(`./lindy/anagrama-${from}.json`)) {
+							  let dataAnagrama2 = JSON.parse(fs.readFileSync(`./lindy/anagrama-${from}.json`))
+							  reply(`o jogo já foi iniciado neste grupo:
+				  palavra: ${dataAnagrama2.embaralhada}
+				  dica: ${dataAnagrama2.dica}
+				  `)} else {
+					  fs.writeFileSync(`./lindy/anagrama-${from}.json`, `${JSON.stringify(palavrasANA[anaaleatorio])}`)
+					  client.sendMessage(from, `
+╭─────≽「 👾 ANAGRAMA 👾 」
+│➽ DESCUBRA A PALAVRA
+│➽ ANAGRAMA: ${palavrasANA[anaaleatorio].embaralhada}
+│➽ DICA: ${palavrasANA[anaaleatorio].dica}
+╰────────────────────────
+				  `,  MessageType.text)
+				  }                  
+						} else if (args.join(' ') ==='desativar') {
+						  if(!fs.existsSync(`./lindy/anagrama-${from}.json`)) return reply('não tem como desativar o jogo do anagrama pôs ele não foi ativado')
+				  fs.unlinkSync(`./lindy/anagrama-${from}.json`)
+				  reply("desativado com sucesso")
+						}
+					break
 					
- 
+					
+					
+					
+					
+                               // FIIIIIM //
 					}
 			
 					if (isGroup && isSimi && budy != undefined) {
