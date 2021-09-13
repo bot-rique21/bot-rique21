@@ -399,7 +399,7 @@ async function starts() {
 		if (budy.toLowerCase().includes("@554891428604")){
 					if (!isGroup) return
 					client.updatePresence(from, Presence.composing)
-					reply(`Ta falando oq do meu dono ?`)
+					reply('Ta falando oq do meu dono ?')
 				    }
 			
 
