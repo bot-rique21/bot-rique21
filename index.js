@@ -1329,6 +1329,29 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					// FIIIIIM //
 					
+					// API DE DOWNLOAD  //
+					
+					case 'yts': 
+anu = await fetchJson(`https://api.zeks.xyz/api/yts?q=${body.slice(4)}&apikey=rique2021`, {method: 'get'})
+buffer = await getBuffer(`https://i.ibb.co/XyS1DLw/cdfbdf66f07b.jpg`)
+teks = '𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗦𝗲𝗮𝗿𝗰𝗵\n'
+for (let i of anu.result) {
+teks += `Uploader : 
+Nama Channel : ${i.uploader.username}
+Url Channel : ${i.uploader.url}
+Verified : ${i.uploader.verified}
+Video :
+Nama Video : ${i.video.title}
+Url : ${i.video.url}
+Durasi : ${i.video.duration}
+Deskripsi : ${i.video.snippet}
+Tanggal Upload : ${i.video.upload_date}
+Views : ${i.video.views}\n\n𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝘀𝗲𝗮𝗿𝗰𝗵
+`
+}
+client.sendMessage(from, buffer, image, {quoted: mek, caption: teks.trim()})
+break
+					
 					// COMANDO PARa O JOGO //
 					case 'anagrama':
 						if(!isGroup) return reply('comando apenas para grupos')
