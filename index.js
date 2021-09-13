@@ -1062,13 +1062,18 @@ cuImg = await getBuffer (`https://img.icons8.com/bubbles/2x/admin-settings-male.
 client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whatsapp.net`, ...{}}, message: { "imageMessage": { "caption": "Menu Admins",}}}, caption: admins(prefix, sender)})
 					break
 					
-				case 'menu':
-			  case 'help':
-			 if (!isGroup) return reply(`Este comando só pode ser usado em grupos`)		
-cuImg = await getBuffer (`https://i.ibb.co/0C39nmh/menu.jpg`)
-client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whatsapp.net`, ...{}}, message: { "imageMessage": { "caption": "Menu ",}}}, caption: help(prefix, time, sender)})
-					break
-					
+				  case 'menu':
+	                         case 'ajuda':
+			         case 'help':
+		let palavrasAleatorias = [
+'sexo',
+'sua mãe é minha',
+'gay',
+			]
+	            	uptime = process.uptime ()
+                    putagg = fs.readFileSync('./assets/menu.jpeg')
+                    client.sendMessage(from, putagg, image, {quoted: mek, caption: help(prefix, sender, pushname, time, palavrasAleatorias[Math.floor(Math.random() * palavrasAleatorias.length)])})
+                    break
 					
 					
 					// FIIIIIM //
