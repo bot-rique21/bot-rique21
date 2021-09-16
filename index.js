@@ -634,7 +634,7 @@ async function starts() {
 		if (budy.toLowerCase().includes("@554891428604")){
 					if (!isGroup) return
 					client.updatePresence(from, Presence.composing)
-					reply('Ta falando oq do meu dono ?')
+					reply('e ai o que ser quer como o meu dono ?')
 				    }
 			
 
@@ -1195,6 +1195,15 @@ client.sendMessage(from, cuImg, image, {quoted: { key: { participant: `0@s.whats
 					
 					case 'meme':
 				 data = fs.readFileSync('./src/image/api.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                hasil = await getBuffer(randKey.result)
+                sendImage(hasil, mek, 'APi criador por Rique o lendario')
+				break
+					
+					case 'frases':
+				 data = fs.readFileSync('./src/image/frases.js');
                  jsonData = JSON.parse(data);
                  randIndex = Math.floor(Math.random() * jsonData.length);
                  randKey = jsonData[randIndex];
